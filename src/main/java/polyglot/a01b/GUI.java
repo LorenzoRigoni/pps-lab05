@@ -5,6 +5,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import polyglot.Pair;
+import polyglot.a01b.Logics;
 public class GUI extends JFrame {
 
     private static final long serialVersionUID = -6218820567019985015L;
@@ -12,7 +13,7 @@ public class GUI extends JFrame {
     private final Logics logics;
 
     public GUI(int size, int mines) {
-        this.logics = new LogicsImpl(size,mines);
+        this.logics = Logics.apply(size, mines);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(100*size, 100*size);
 
@@ -37,7 +38,7 @@ public class GUI extends JFrame {
             for (int j=0; j<size; j++){
                 final JButton jb = new JButton(" ");
                 jb.addActionListener(al);
-                this.buttons.put(jb,new Pair<>(j,i));
+                this.buttons.put(jb,new Pair<>(i,j));
                 panel.add(jb);
             }
         }

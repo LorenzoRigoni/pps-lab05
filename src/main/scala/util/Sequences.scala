@@ -27,6 +27,10 @@ object Sequences: // Essentially, generic linkedlists
         case Cons(h, _) => Just(h)
         case _ => Empty()
 
+      def isEmpty: Boolean = sequence match
+        case Nil() => true
+        case _ => false
+
       def concat(other: Sequence[A]): Sequence[A] = sequence match
         case Cons(h, t) => Cons(h, t.concat(other))
         case _ => other
